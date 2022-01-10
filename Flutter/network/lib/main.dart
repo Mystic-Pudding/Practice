@@ -4,40 +4,34 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
-Future<Album> fetchAlbum() async {
-  final response = await http
-      .get(Uri.parse('https://jsonplaceholder.typicode.com/albums/1'));
+Future<String> fetch() async{
+  try{
+    var url = Uri.parse('http://127.0.0.1:5000');
+    http.Response response = await http.get(url);
+    print(response.body);
+    print('succes');
 
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return Album.fromJson(jsonDecode(response.body));
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load album');
+  } catch(e){
+    print('fail');
+    return '1';
   }
+  return '1';
 }
 
-class Album {
-  final int userId;
-  final int id;
-  final String title;
-
-  Album({
-    required this.userId,
-    required this.id,
-    required this.title,
-  });
-
-  factory Album.fromJson(Map<String, dynamic> json) {
-    return Album(
-      userId: json['userId'],
-      id: json['id'],
-      title: json['title'],
-    );
-  }
-}
+// Future<Album> fetchAlbum() async {
+//   final response = await http
+//       .get(Uri.parse('http://127.0.0.1:5000/'));
+//     print('succes');
+//   if (response.statusCode == 200) {
+//     // If the server did return a 200 OK response,
+//     // then parse the JSON.
+//     return Album.fromJson(jsonDecode(response.body));
+//   } else {
+//     // If the server did not return a 200 OK response,
+//     // then throw an exception.
+//     throw Exception('Failed to load album');
+//   }
+// }
 
 void main() => runApp(const MyApp());
 
@@ -49,12 +43,11 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  late Future<Album> futureAlbum;
 
   @override
   void initState() {
     super.initState();
-    futureAlbum = fetchAlbum();
+    var result = fetch();
   }
 
   @override
@@ -69,11 +62,10 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Fetch Data Example'),
         ),
         body: Center(
-          child: FutureBuilder<Album>(
-            future: futureAlbum,
+          child: FutureBuilder<String>(
             builder: (context, snapshot) {
               if (snapshot.hasData) {
-                return Text(snapshot.data!.title);
+                return Text(snapshot.data!);
               } else if (snapshot.hasError) {
                 return Text('${snapshot.error}');
               }
