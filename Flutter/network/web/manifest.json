@@ -1,6 +1,6 @@
 {
-    "name": "network",
-    "short_name": "network",
+    "name": "networkpython",
+    "short_name": "networkpython",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
