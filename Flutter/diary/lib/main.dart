@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'survey.dart';
+import 'diary.dart';
 
 void main() {
   runApp(const MaterialApp(
@@ -32,8 +34,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
-   FirstRoute(),
-   SecondRoute()
+   Servey(),
+   Diary()
   ];
 
   void _onItemTapped(int index) {
@@ -63,55 +65,6 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
         selectedItemColor: Colors.amber[800],
         onTap: _onItemTapped,
       ),
-    );
-  }
-}
-
-//tabview
-
-class FirstRoute extends StatelessWidget {
-  const FirstRoute({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-       
-      ),
-      body: Center(
-        child: ElevatedButton(
-          child: const Text('Open route'),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const SecondRoute()),
-            );
-            
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class SecondRoute extends StatelessWidget {
-  const SecondRoute({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-      ),
-      body: Center(
-        child:Text("diary list"),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.white,
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Icon(Icons.edit)
-        ),
     );
   }
 }
