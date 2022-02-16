@@ -21,8 +21,8 @@ class Diary extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children:[
-          Text(title+contents),
-          _image == null ? Text('no image selected') : Image.file(File(_image!.path))
+          Text(title),
+          _image == null ? Text('') : Image.file(File(_image!.path))
 
           ],
               
@@ -86,7 +86,8 @@ class Input extends State<Inputstate> {
             hintText: "Title"
           ),
         ),
-
+        _image == null ? Text('') : Image.file(File(_image!.path)),
+        
         TextField(
           controller: contents_save,
           decoration: InputDecoration(
@@ -98,7 +99,7 @@ class Input extends State<Inputstate> {
     );
   }
 Future getImage() async{
-  XFile? image = await picker.pickImage(source: ImageSource.gallery);
+  XFile? image = await picker.pickImage(source: ImageSource.gallery,maxHeight: 600,maxWidth: 600);
   _image = image;
   setState(() {
     _image = image;
