@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:diary/main.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 var title = '';
@@ -10,10 +11,15 @@ var contents = '';
 final ImagePicker picker = ImagePicker();
 XFile? _image;
 
-
-class Diary extends StatelessWidget {
+class Diary extends StatefulWidget {
   const Diary({Key? key}) : super(key: key);
-  
+
+  @override 
+  Diarystate createState() => Diarystate();
+}
+
+
+class Diarystate extends State<Diary> {  
   @override
   Widget build(BuildContext context) {
 
