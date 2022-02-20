@@ -1,0 +1,6 @@
+package com.example.listviewnavigator
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity: FlutterActivity() {
+}
