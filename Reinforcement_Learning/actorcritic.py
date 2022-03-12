@@ -70,7 +70,7 @@ def main():
     print_interval = 20
     score = 0.0
 
-    for n_epi in range(10000):
+    for n_epi in range(1000):
         done = False
         s = env.reset()
         while not done:
@@ -83,6 +83,8 @@ def main():
                 
                 s = s_prime
                 score += r
+            if n_epi>400:
+                env.render()
                 
                 if done:
                     break                     
