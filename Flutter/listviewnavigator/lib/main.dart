@@ -1,26 +1,34 @@
-// Copyright 2018 The Flutter team. All rights reserved.
-// Use of this source code is governed by a BSD-style license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/material.dart';
-List item = [1,2,3,4];
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
+  
+
   const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    const title = 'Long List';
+    var items = [1,2,3,4];
+
     return MaterialApp(
-      title: 'Welcome to Flutter',
+      title: title,
       home: Scaffold(
-        body: Center(
-          child: ListView.builder(
-            itemCount: item.length,
-            itemBuilder: (_, item)),
+        appBar: AppBar(
+          title: const Text(title),
+        ),
+        body: ListView.builder(
+          itemCount: items.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              title: Text(items[index].toString()),
+            );
+          },
         ),
       ),
     );
