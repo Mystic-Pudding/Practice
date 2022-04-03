@@ -29,11 +29,18 @@ struct scro : View{
         ScrollView{
             VStack{
                 ForEach(0..<100){ item in
-                    Text("\(item)")
-                        .font(.largeTitle)
+                    HStack(alignment:.center){
+                        Circle()
+                            .opacity(0)
+                            .background(LinearGradient(gradient: Gradient(colors: [Color.purple,Color.pink,Color.white]), startPoint: .top, endPoint: .bottom))
+                            .frame(width: 50, height: 50)
+                            .clipShape(Circle())
+                        Text("content\(item)")
+                    }
                 }
             }
-        }.frame(width: 300, height: .infinity)
+        }.frame(width: .infinity, height: .infinity)
+        .edgesIgnoringSafeArea(.all)
     }
 }
 
