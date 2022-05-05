@@ -7,14 +7,9 @@
 
 import Foundation
 
-// MARK: - Results
-struct Results: Decodable {
-    let articles: [numbers]
-}
-
-// MARK: - Article
-struct numbers: Decodable, Hashable{
+struct apis: Decodable, Hashable{
     let greeting : String
+    let number : Int
 }
 
 struct teststruct {

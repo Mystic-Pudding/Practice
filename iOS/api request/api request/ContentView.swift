@@ -13,10 +13,11 @@ struct ContentView: View {
     
     var body: some View {
         VStack{
+            Text(network.greet)
+            Text("\(network.number)")
             Button {
                 network.fetchData()
-                print(network.posts)
-                print(teststruct.self)
+//                print(teststruct.self)
             } label: {
                 Text("fetchdata")
             }

@@ -11,7 +11,8 @@ import Foundation
 class RequestAPI: ObservableObject {
     static let shared = RequestAPI()
     private init() { }
-    @Published var posts : String = ""
+    @Published var greet : String = ""
+    @Published var number : Int = 0
     
     func fetchData(){
         
@@ -26,20 +27,21 @@ class RequestAPI: ObservableObject {
                 return
             }
             guard let response = response as? HTTPURLResponse, response.statusCode == 200 else{
-                self.posts = ""
+                self.greet = ""
+                self.number = 0
                 return
             }
             guard let data = data else{
                 return
             }
             do{
-                let apiResponse = try JSONDecoder().decode(numbers.self, from: data)
+                let apiResponse = try JSONDecoder().decode(apis.self, from: data)
                 DispatchQueue.main.async {
-                    self.posts = apiResponse.greeting
+                    self.greet = apiResponse.greeting
+                    self.number = apiResponse.number
                 }
             }catch(let err){
                 print(err.localizedDescription)
-                print("fail")
             }
         }
         task.resume()
