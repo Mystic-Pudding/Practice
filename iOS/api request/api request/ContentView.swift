@@ -16,6 +16,7 @@ struct ContentView: View {
             Button {
                 network.fetchData()
                 print(network.posts)
+                print(teststruct.self)
             } label: {
                 Text("fetchdata")
             }

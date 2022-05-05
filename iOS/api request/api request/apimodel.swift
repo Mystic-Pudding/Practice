@@ -16,3 +16,9 @@ struct Results: Decodable {
 struct numbers: Decodable, Hashable{
     let greeting : String
 }
+
+struct teststruct {
+    let test1 : Int
+    let test2 : Float
+    let test3 : Double
+}
