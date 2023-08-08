@@ -1,8 +1,10 @@
 from flask import Flask
 import random
 import functions
+import pageFromAnotherFile
 
 app = Flask(__name__)
+app.register_blueprint(pageFromAnotherFile.app)
 
 @app.route('/')
 def mainPage() -> str:
