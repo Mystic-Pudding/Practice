@@ -1,7 +1,11 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from routers.ncf import ncf
+from routers.nfm import nfm
 
 app = FastAPI()
+app.include_router(ncf)
+app.include_router(nfm)
 
 class DataInput(BaseModel):
     name: str
@@ -17,7 +21,7 @@ def pydanticPost(dataRequest: DataInput):
     print(dataRequest)
     return {"prob" : 0.1, "prediction" : 0}
 
-@app.get("/{name}")
+@app.get("")
 async def root(name: str):
     return {"message" : "hello"}
 
