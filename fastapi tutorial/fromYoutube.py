@@ -43,14 +43,19 @@ async def getUser(userName: str, height: Optional[float] = None):
         return {"userName" : userName, "height" : height}
     else:
         return {"userName" : userName}
+    
+class SubItem(BaseModel):
+    name: str
+    price: float
 
 class Item(BaseModel):
     name: str 
     description: Optional[str] = None
     price: float
     tax: Optional[float] = None
+    sub: SubItem
 
 @app.post("/items")
 async def createItem(item: Item):
-    return item
+    return {"receivedItem" : item}
     
