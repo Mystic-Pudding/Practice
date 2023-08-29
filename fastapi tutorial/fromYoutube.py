@@ -55,7 +55,11 @@ class Item(BaseModel):
     tax: Optional[float] = None
     sub: SubItem
 
+class LimitDate(BaseModel):
+    Open: str 
+    Close: str
+
 @app.post("/items")
-async def createItem(item: Item):
-    return {"receivedItem" : item}
+async def createItem(item: Item, limit: LimitDate):
+    return {"receivedItem" : item, "receivedLimit" : limit}
     
