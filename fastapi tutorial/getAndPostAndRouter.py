@@ -21,7 +21,7 @@ def pydanticPost(dataRequest: DataInput):
     print(dataRequest)
     return {"prob" : 0.1, "prediction" : 0}
 
-@app.get("")
+@app.get("/")
 async def root(name: str):
     return {"message" : "hello"}
 
