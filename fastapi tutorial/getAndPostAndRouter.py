@@ -23,7 +23,7 @@ def pydanticPost(dataRequest: DataInput):
 
 @app.get("/")
 async def root(name: str):
-    return {"message" : "hello"}
+    return {"message" : "hello" + name}
 
 @app.get("/home/{name}")    # url/home/hello    or      url/home/hello?age=20
 async def home(name: str, age: int):    

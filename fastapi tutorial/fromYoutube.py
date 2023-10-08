@@ -3,6 +3,8 @@ from enum import Enum
 from typing import Optional
 from pydantic import BaseModel
 
+# uvicorn fromYoutube:app --reload
+
 app = FastAPI()
 
 @app.get("/")
@@ -33,6 +35,7 @@ async def getFood(foodName: Food):
     if foodName.value == "vegetables":
         return {"foodName" : foodName}
     
+#http://127.0.0.1:8000/users?name=mystic&age=6 get부분에 포함되어 있지 않은 변수는 optinal로 ?뒤에 작성.
 @app.get("/users")
 async def users(name: str, age: int = 10):
     return {"name" : name, "age" : age}
